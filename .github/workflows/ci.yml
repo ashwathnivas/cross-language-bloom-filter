@@ -1,7 +1,5 @@
 name: CI
-
 on: [push, pull_request]
-
 jobs:
   java:
     runs-on: ubuntu-latest
@@ -29,7 +27,7 @@ jobs:
       - name: Run Interop Test
         run: |
           cd java
-          mvn -q compile exec:java -Dexec.mainClass="JavaExample" -Dexec.args="generate"
+          mvn -q compile exec:java -Dexec.mainClass="com.github.ashwathnivas.bloomfilter.JavaExample" -Dexec.args="generate"
           cp filter.bf ../c/
           cd ../c/build
           ./bloomfilter_demo ../filter.bf hello
