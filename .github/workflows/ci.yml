@@ -1,0 +1,35 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  java:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: java
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - name: Build & Test Java
+        run: mvn -B test
+
+  c:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build C
+        run: |
+          cd c
+          cmake -B build
+          cmake --build build
+      - name: Run Interop Test
+        run: |
+          cd java
+          mvn -q compile exec:java -Dexec.mainClass="JavaExample" -Dexec.args="generate"
+          cp filter.bf ../c/
+          cd ../c/build
+          ./bloomfilter_demo ../filter.bf hello
