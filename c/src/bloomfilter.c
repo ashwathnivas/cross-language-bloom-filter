@@ -176,7 +176,7 @@ void bloomFilterFree(BloomFilter* bf) {
 }
 
 /* --- Minimal CLI: <program> <bloom_file> <string_to_check> --- */
-int main(int argc, char* argv[]) {
+/*int main(int argc, char* argv[]) {
     if (argc < 3) {
         fprintf(stderr, "Usage: %s <bloom_file> <string_to_check>\n", argv[0]);
         return 1;
@@ -193,4 +193,4 @@ int main(int argc, char* argv[]) {
 
     bloomFilterFree(bf);
     return 0;
-}
+}*/
