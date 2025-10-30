@@ -13,6 +13,6 @@ target_link_libraries(bloomfilter_demo bloomfilter)
 
 # Tests
 enable_testing()
-add_executable(test_roundtrip tests/c/test_roundtrip.c)
+add_executable(test_roundtrip tests/test_roundtrip.c)
 target_link_libraries(test_roundtrip bloomfilter)
 add_test(NAME RoundTrip COMMAND test_roundtrip)

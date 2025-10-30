@@ -12,13 +12,6 @@ A **language-agnostic Bloom filter** with **byte-for-byte identical serializatio
 - Add in C → query in Java (soon)
 - Extendable to Python, Go, Rust, etc.
 
-## Features
-- Zero dependencies
-- MIT Licensed
-- Binary compatible (big-endian header)
-- MurmurHash32 with Java/C int semantics
-- Memory efficient
-
 ## Quick Start
 
 ### Java
@@ -28,6 +21,21 @@ bf.add("hello");
 bf.save("filter.bf");
 ```
 
+### C
+```C
+BloomFilter* bf = bloomFilterLoad("filter.bf");
+printf("Contains: %s\n", bloomFilterContains(bf, "hello", 5) ? "YES" : "NO");
+bloomFilterFree(bf);
+```
+
+## Features
+- Zero dependencies
+- MIT Licensed
+- Binary compatible (big-endian header)
+- MurmurHash32 with Java/C int semantics
+- Memory efficient
+- Byte-for-byte identical files
+
 ## Works Everywhere
 
 | OS | Java | C |
@@ -35,12 +43,5 @@ bf.save("filter.bf");
 | Linux | Yes | Yes |
 | macOS | Yes | Yes |
 | Windows | Yes | Yes (MSVC/MinGW) |
-
-**No build scripts. No JNI. Just files.**
-
-- **Zero dependencies**
-- **Byte-for-byte identical files**
-- **MIT Licensed**
-- **Runs on Linux, macOS, Windows**
 
 ---
