@@ -12,6 +12,10 @@ A **language-agnostic Bloom filter** with **byte-for-byte identical serializatio
 - Add in C → query in Java (soon)
 - Extendable to Python, Go, Rust, etc.
 
+### Why does this exist?
+
+When you need a Bloom filter that lives in a Java service but gets queried by a C-based component, most libraries fail silently due to hash function or serialisation differences. This library solves that with a strict binary specification and verified cross-language tests.
+
 ## Quick Start
 
 ### Java
